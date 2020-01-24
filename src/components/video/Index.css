@@ -1,3 +1,7 @@
 .video{
   text-align: center;
 }
+
+#activeLesson{
+  color: rgb(247, 0, 0);
+}

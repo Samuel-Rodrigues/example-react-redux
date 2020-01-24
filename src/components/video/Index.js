@@ -11,7 +11,7 @@ const Video = ({ activeLesson, activeModule, value }) =>
     <hr />
     <p>Solicitações realizadas: {value}</p>
     <p><strong>Módulo: </strong> {activeModule.title}</p>
-    <strong>Aula: </strong>{activeLesson.title}
+    <strong>Aula: </strong><span id="activeLesson">{activeLesson.title}</span>
     <hr />
   </div>
 

@@ -6,18 +6,18 @@ const INITIAL_STATE = {
   modules: [
     {
       id: 1,
-      title: "Módulo 01",
+      title: "01",
       lessons: [
-        { id: 1, title: "Primeira aula" },
-        { id: 2, title: "Segunda aula" }
+        { id: 1, active: false, title: "Primeira aula" },
+        { id: 2, active: false, title: "Segunda aula" }
       ]
     },
     {
       id: 2,
-      title: "Módulo 02",
+      title: " 02",
       lessons: [
-        { id: 3, title: "Primeira aula" },
-        { id: 4, title: "Segunda aula" }
+        { id: 3, active: false, title: "Primeira aula" },
+        { id: 4, active: false, title: "Segunda aula" }
       ]
     }
   ]
@@ -28,8 +28,28 @@ const INITIAL_STATE = {
 //Primeiro estado (Estado antes da action ser disparada)
 //Segunda estado (Action )
 export default function course(state = INITIAL_STATE, action) {
+
   if (action.type === 'TOGGLE_LESSON') {
-    return { ...state, activeLesson: action.lesson, activeModule: action.module }
+
+    state.modules.map(module => {
+      module.lessons.map(lesson => {
+        lesson.active = false
+      })
+    })
+
+    state.modules.map(module => {
+      if (module.id === action.module.id) {
+        module.lessons.map(lesson => {
+          if (lesson.id === action.lesson.id) {
+            lesson.active = true
+          }
+        })
+      }
+    })
+
+    return {
+      ...state, activeLesson: action.lesson, activeModule: action.module
+    }
   }
   return state
 }
