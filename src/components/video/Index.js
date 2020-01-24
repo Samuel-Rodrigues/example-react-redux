@@ -2,14 +2,16 @@ import React from 'react';
 
 import { connect } from 'react-redux'
 
+import './Index.css'
+
 // import { Container } from './styles';
 
 const Video = ({ activeLesson, activeModule, value }) =>
-  <div>
+  <div className="video">
     <hr />
     <p>Solicitações realizadas: {value}</p>
-    <strong>Módulo: </strong> {activeModule.title}
-    <strong>Aula: </strong>{ activeLesson.title}
+    <p><strong>Módulo: </strong> {activeModule.title}</p>
+    <strong>Aula: </strong>{activeLesson.title}
     <hr />
   </div>
 
